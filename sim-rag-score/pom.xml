@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ie.dev.decisions</groupId>
+  <artifactId>sim-rag-score</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <description>Decision Service for SIM Red-Amber-Green Scoring</description>
+
+  <properties>
+    <maven.compiler.release>11</maven.compiler.release>
+    <kogito.version>1.11.0.redhat-00015</kogito.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.kie.kogito</groupId>
+        <artifactId>kogito-spring-boot-bom</artifactId>
+        <version>${kogito.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+       <groupId>org.kie.kogito</groupId>
+       <artifactId>kogito-spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>    
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.kie.kogito</groupId>
+        <artifactId>kogito-maven-plugin</artifactId>
+        <version>${kogito.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Specify the repositories containing Spring Boot artifacts. -->
+  <repositories>
+    <repository>
+      <id>redhat-ga</id>
+      <name>Red Hat GA Repository</name>
+      <url>https://maven.repository.redhat.com/ga/</url>
+    </repository>
+  </repositories>
+
+  <!-- Specify the repositories containing the plugins used to execute the build of your application. -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>redhat-ga</id>
+      <name>Red Hat GA Repository</name>
+      <url>https://maven.repository.redhat.com/ga/</url>
+    </pluginRepository>
+  </pluginRepositories>
+</project>
