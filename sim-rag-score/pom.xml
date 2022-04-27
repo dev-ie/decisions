@@ -27,7 +27,7 @@
   <dependencies>
     <dependency>
        <groupId>org.kie.kogito</groupId>
-       <artifactId>kogito-spring-boot-starter</artifactId>
+       <artifactId>kogito-decisions-spring-boot-starter</artifactId>
     </dependency>
 
     <dependency>
@@ -38,6 +38,8 @@
   </dependencies>
 
   <build>
+    <finalName>sim-rag-score</finalName>
+
     <plugins>
       <plugin>
         <groupId>org.kie.kogito</groupId>
@@ -48,6 +50,13 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+              <goals>
+                  <goal>repackage</goal>
+              </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
