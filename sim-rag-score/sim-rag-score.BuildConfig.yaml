@@ -1,0 +1,11 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: sim-rag-score
+  namespace: cicd
+spec:
+  source:
+    type: binary
+  strategy:
+    type: Docker
+  triggers: []

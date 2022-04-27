@@ -1,15 +1,35 @@
-node('maven') {
-    stage('Build') {
-        checkout scm
-        dir('sim-rag-score'){
-            sh 'mvn clean package'
-            archiveArtifacts artifacts: 'target/sim-rag-score.jar', fingerprint: true
+library identifier: "pipeline-library@v1.6",
+retriever: modernSCM(
+  [
+    $class: "GitSCMSource",
+    remote: "https://github.com/redhat-cop/pipeline-library.git"
+  ]
+)
+
+pipeline {
+    agent {
+        label 'maven'
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                checkout scm
+            }
         }
-    }
-    stage('Test') {
-        echo 'Testing....'
-    }
-    stage('Deploy') {
-        echo 'Deploying....'
+
+        stage('Maven Build') {
+            steps {
+                dir('sim-rag-score') {
+                    sh 'mvn clean package'
+                }
+            }
+        }
+
+        stage('Container Build') {
+            steps {
+                binaryBuild(projectName: 'cicd', buildConfigName: 'sim-rag-score', buildFromPath: 'sim-rag-score')
+            }
+        }
     }
 }
