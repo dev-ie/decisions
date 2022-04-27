@@ -1,4 +1,4 @@
-node {
+node('maven') {
     stage('Build') {
         checkout scm
         sh 'cd sim-rag-score'
