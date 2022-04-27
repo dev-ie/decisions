@@ -2,7 +2,7 @@ node {
     stage('Build') {
         checkout scm
         sh 'cd sim-rag-score'
-        sh 'mvn clean package'
+        sh './mvnw clean package'
         archiveArtifacts artifacts: 'target/sim-rag-score.jar', fingerprint: true
     }
     stage('Test') {
