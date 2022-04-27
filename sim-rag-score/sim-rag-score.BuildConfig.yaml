@@ -6,6 +6,12 @@ metadata:
 spec:
   source:
     type: binary
+    binary: {}
   strategy:
     type: Docker
   triggers: []
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'sim-rag-score:latest'
+    
