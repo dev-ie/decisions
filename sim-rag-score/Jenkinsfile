@@ -1,6 +1,9 @@
 node {
     stage('Build') {
-        echo 'Building....'
+        checkout scm
+        sh 'cd sim-rag-score'
+        sh 'mvn clean package'
+        archiveArtifacts artifacts: 'target/sim-rag-score.jar', fingerprint: true
     }
     stage('Test') {
         echo 'Testing....'
