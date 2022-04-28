@@ -20,7 +20,7 @@ pipeline {
 
         stage('Maven Build') {
             steps {
-                dir('sim-rag-score') {
+                dir('sim-traffic-light') {
                     sh 'mvn clean package'
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Container Build') {
             steps {
-                binaryBuild(projectName: 'cicd', buildConfigName: 'sim-rag-score', buildFromPath: 'sim-rag-score')
+                binaryBuild(projectName: 'cicd', buildConfigName: 'sim-traffic-light', buildFromPath: 'sim-traffic-light')
             }
         }
     }

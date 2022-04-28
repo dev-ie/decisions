@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: sim-rag-score
+  name: sim-traffic-light
   namespace: cicd
 spec:
   source:
@@ -13,5 +13,5 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'sim-rag-score:latest'
+      name: 'sim-traffic-light:latest'
     
