@@ -13,5 +13,10 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'sim-traffic-light:latest'
+      name: "sim-traffic-light:latest"
+    imageLabels:
+      - name: "name"
+        value: "sim-traffic-light"
+      - name: "summary"
+        value: "Decision Service for Straw Incorporation Measure Traffic Light"
     
